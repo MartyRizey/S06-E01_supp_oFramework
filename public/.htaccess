@@ -1,0 +1,17 @@
+# activation du module de réécriture d'Apache
+RewriteEngine On
+
+# dynamically setup base URI
+# parti de la requête qui ne bougera pas, en gros le chemin jusqu'au fichier.
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+# cette partie sera stocker dans une variable d'environnement 'E' dans la variable super globale $_SERVER.
+RewriteRule ^(.*) - [E=BASE_URI:%1]
+
+# redirect every request to index.php
+# and give the relative URL in "_url" GET param
+# Si le dossier n'existe pas, on redirige. Sinon on affiche le fichier demandé.
+RewriteCond %{REQUEST_FILENAME} !-d
+# Si le fichier n'existe pas, on redirige. Sinon on affiche le fichier demandé.
+RewriteCond %{REQUEST_FILENAME} !-f
+# on réécrit ou on redirige la requête en GET dans l'URL vers l'index.php
+RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
