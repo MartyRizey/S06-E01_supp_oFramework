@@ -49,9 +49,39 @@ Le fichier `.htaccess` est le fichier de configuration du `server Apache`. Dans 
     _https://docs.ovh.com/fr/hosting/mutualise-tout-sur-le-fichier-htaccess/_
     _https://openclassrooms.com/fr/courses/1093276-le-htaccess-et-ses-fonctionnalites_
 
-
- > #### Dépendances 
+---
+ > #### Dépendances / installation de librairie
  début : 00:28:53  
+
+Exemple de gestionnaire de package : 
+- Linux : apt -> Advanced Package Tool
+- Atom  : apm -> Atom Package Manager
+- PHP   : composer -> Gestionnaire de dépendances de paquets
+
+- https://packagist.org/ : permet de trouver les paquets à installer.
+
+```
+Ce positionner dans le dossier courant de travail, pour initialiser composer.
+Lancer composer avec le terminal : > composer init 
+
+- Répondre aux questions
+    -> choix du package 
+        - altorouter
+        - var-dump
+- Attention : penser à répondre _oui_ pour l'ajout du dosser `vendor` dans `.gitignore`. Sinon le faire manuellement.
+
+Une fois les dépendances initialisées grâce à 'composer init' .
+Lancer la commande install : > composer install
+```
+---
+
+>
+
+début : 00:57:38
+
+
+
+
 
 
 
