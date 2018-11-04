@@ -43,7 +43,7 @@ Le `point d'entrée` permet au `Server Apache` de rediriger les requêtes de l'U
 --
 - **.htaccess :**  
 `URL Rewriting` :  
-Le fichier `.htaccess` est le fichier de configuration du `server Apache`. Dans notre cas, il permet la réécriture d'URL pour rediriger vers l'index.php si le fichier demandé n'existe pas, sinon il fournit le fichier. Cela reste transparent dans l'URL. 
+Le fichier `.htaccess` est le fichier de configuration du `server Apache`. Dans notre cas, il permet la réécriture d'URL pour rediriger un fichier vers l'index.php si le fichier demandé n'existe pas, sinon il fournit le fichier. Cela reste transparent dans l'URL. 
 --
     - _Ressources_ : 
     _https://docs.ovh.com/fr/hosting/mutualise-tout-sur-le-fichier-htaccess/_

@@ -1,4 +1,4 @@
-# activation du module de réécriture d'Apache
+# activation du module de réécriture d'URL d'Apache
 RewriteEngine On
 
 # dynamically setup base URI
