@@ -49,6 +49,8 @@ Le fichier `.htaccess` est le fichier de configuration du `server Apache`. Dans 
     _https://docs.ovh.com/fr/hosting/mutualise-tout-sur-le-fichier-htaccess/_
     _https://openclassrooms.com/fr/courses/1093276-le-htaccess-et-ses-fonctionnalites_
 
+Voir schéma fichier > _1-architectureBAse-mvc.odt_ ou _1-architectureBAse-mvc.pdf_
+
 ---
  > #### Dépendances / installation de librairie
  début : 00:28:53  
@@ -68,6 +70,7 @@ Lancer composer avec le terminal : > composer init
     -> choix du package 
         - altorouter
         - var-dump
+        - ...
 - Attention : penser à répondre _oui_ pour l'ajout du dosser `vendor` dans `.gitignore`. Sinon le faire manuellement.
 
 Une fois les dépendances initialisées grâce à 'composer init' .
