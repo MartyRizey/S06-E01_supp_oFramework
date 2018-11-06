@@ -10,7 +10,7 @@ VIDEO  Blue-01-Martin-oFramework.mp4 :  https://drive.google.com/drive/folders/1
 
  ---  
 
- > #### Création de l'architecture de base  
+#### Création de l'architecture de base  
 
 début : 00:03:55
 
@@ -52,8 +52,8 @@ Le fichier `.htaccess` est le fichier de configuration du `server Apache`. Dans 
 Voir schéma fichier > _1-architectureBAse-mvc.odt_ ou _1-architectureBAse-mvc.pdf_
 
 ---
- > #### Dépendances / installation de librairie
- début : 00:28:53  
+#### Dépendances / installation de librairie
+début : 00:28:53  
 
 Exemple de gestionnaire de package : 
 - Linux : apt -> Advanced Package Tool
@@ -76,11 +76,68 @@ Lancer composer avec le terminal : > composer init
 Une fois les dépendances initialisées grâce à 'composer init' .
 Lancer la commande install : > composer install
 ```
+Voir schéma fichier > _2-composer_package.odt_ ou _2-composer_package.pdf_
+
 ---
 
->
-
+### Point d'entrée 
 début : 00:57:38
+
+Le fichier `index.php` c'est notre point d'entrée, c'est ce fichier qui sera exécuté en premier. C'est lui qui va centraliser nos requêtes via _.htaccess_
+- on a donc besoin d'inclure ou de charger les dépendances via le fichier **autoload.php** dans le dossier _vendor_.
+- on a besoin aussi d'inclure les dossiers des classes de `app`.
+    - Utils
+    - Models
+    - Controllers
+
+`index.php` 
+```
+<?php
+
+// require __DIR__.'/../app/Utils/...';
+// require __DIR__.'/../app/Models/...';
+// require __DIR__.'/../app/Controllers/...';
+
+// Inclusion de Composer
+require __DIR__.'/../vendor/autoload.php';
+```
+---
+
+### FrontController
+
+début : 01:02:30 
+
+C'est la base de notre application ou de notre framework. Il va aussi démarrer notre site internet.
+Notre **FrontController** c'est une classe. On va le placer à la racine du dossier `app` et le nommer **`Application.php`** on aurait pu le nommer `app.php` également.
+On va aussi inclure dans notre _point d'entrée_ le fichier _index.php_ le fichier du FrontController **`Application.php`** 
+
+`index.php`
+```
+<?php
+
+// require __DIR__.'/../app/Utils/...';
+// require __DIR__.'/../app/Models/...';
+// require __DIR__.'/../app/Controllers/...';
+
+// Inclusion du FrontController
+require __DIR__ .'/../app/FrontController.php';
+
+// Inclusion de Composer
+require __DIR__.'/../vendor/autoload.php';
+```
+Pour pouvoir démarrer je créer une instance de mon _application_ ou de mon _framework_ dans l'**index.php**
+```
+$application = new Application();
+```
+
+1:10:00
+
+
+
+
+
+
+
 
 
 
