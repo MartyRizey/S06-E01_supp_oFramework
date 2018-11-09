@@ -111,7 +111,7 @@ C'est la base de notre application ou de notre framework. Il va aussi démarrer 
 Notre **FrontController** c'est une classe. On va le placer à la racine du dossier `app` et le nommer **`Application.php`** on aurait pu le nommer `app.php` également.
 On va aussi inclure dans notre _point d'entrée_ le fichier _index.php_ le fichier du FrontController **`Application.php`** 
 
-`index.php`
+- `index.php`
 ```
 <?php
 
@@ -125,10 +125,24 @@ require __DIR__ .'/../app/FrontController.php';
 // Inclusion de Composer
 require __DIR__.'/../vendor/autoload.php';
 ```
-Pour pouvoir démarrer je créer une instance de mon _application_ ou de mon _framework_ dans l'**index.php**
+Pour pouvoir démarrer je créer une instance de mon _application_ ou de mon _framework_ dans l'**index.php** (point d'entrée.)
 ```
 $application = new Application();
 ```
+Il faut maintenant pour pouvoir démarrer cette `Application` que je là définisse dans une _classe_, avec des _propriétés_ et des _méthodes_. 
+Je retourne donc dans mon _FrontController_ dans le fichier **` Application.php`**, pour y créer ma _classe_, qui définira mon objet instancié dans _index.php_.
+
+La structure de cette classe  sera :
+- `Application.php`
+```
+<?php
+
+class Application
+{
+
+}
+```
+    
 
 1:10:00
 
