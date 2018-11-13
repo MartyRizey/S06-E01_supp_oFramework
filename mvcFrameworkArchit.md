@@ -107,7 +107,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 début : 01:02:30 
 
-C'est la base de notre application ou de notre framework. Il va aussi démarrer notre site internet.
+Le _FrontController_ c'est la base de notre application ou de notre framework. Il va aussi démarrer notre site internet.
 Notre **FrontController** c'est une classe. On va le placer à la racine du dossier `app` et le nommer **`Application.php`** on aurait pu le nommer `app.php` également.
 On va aussi inclure dans notre _point d'entrée_ le fichier _index.php_ le fichier du FrontController **`Application.php`** 
 
@@ -143,8 +143,9 @@ class Application
 }
 ```
     
-
-1:10:00
+### Router et routes
+https://www.grafikart.fr/tutoriels/php/router-628
+1:23:00
 
 
 
