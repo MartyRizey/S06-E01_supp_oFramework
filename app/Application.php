@@ -13,7 +13,7 @@ class Application
     // autrement dit lorsque l'on fait un new Application()
     public function __construct()
     {
-        // On lance AltoRouteur
+        // On lance(préconfigure) AltoRouteur
         // J'instancie un nouvel objet à partir de AltoRouter 
         $this->router = new AltoRouter();
 
@@ -43,14 +43,37 @@ class Application
 
         dump($baseUrl);
 
-        dump($this->router);
+        dump($this->router); // permet de voir ce qu'il y a dans l'objet $router de la classe AltoRouter
 
         // 1:16:40 
         // 1:17:08 récap > index.php et Application.php
         // 1:19:40 suite
         // 1:23:00 les routes
 
+        // J'appelle ma méthode 'defineRoutes' qui se charge de remplir notre objet Altorouter avec nos routes
+        $this->defineRoutes();
+
     }
+
+    private function defineRoutes()
+    {
+        // routes
+        // toutes les routes seront placées dans une méthode réservée aux routes
+        // map() -> méthode de AltoRouter -> http://altorouter.com/usage/mapping-routes.html
+        // map('méthode', 'url', 'appel la méthode 'home' de MainController, 'nom de la route');
+        // donc dès qu'on appellera l'URL / en GET, en gros dés qu'on affichera la home dans le navigateur, on appellera la méthode Home du MainController
+        // Le 4eme argument est un nom qu'on donne à la route, il nous permettra par exemple de retrouver notre route ailleurs pour générer des lien en faisant $routeur->generate('nom_de_la_route')
+        $this->router->map('GET', '/', 'MainController#home','main_home');
+        // $this->router->map('GET', '/', 'MainController#home','main_home');
+        // $this->router->map('GET', '/', 'MainController#home','main_home');
+        // $this->router->map('GET', '/', 'MainController#home','main_home');
+
+        dump($this->router);
+
+    }
+
+    // 
+    // 1:29:50 : suite
     
 }
     
