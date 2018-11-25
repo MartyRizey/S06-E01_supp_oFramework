@@ -26,7 +26,7 @@ class Application
         // à la clé BASE_URI la valeur est : /Lunar_3-9-18/S06_API_31-10-18_12-11-18/E01-oFramework-filRougeSaison/S06-E01_supp_oFramework-Rappel/public
         // autrement dit le chemin jusqu'au point d'entrée 'index.php'. BASE_URI est la partie qui ne change pas dans notre URL.
         // URL = nom de domaine + BASE_URI + point d'entrée ou fichier ciblé.
-        dump($_SERVER);
+    // dump($_SERVER);
 
         // Définition de la base_URI à AltoRouter
         // Doc : http://altorouter.com/
@@ -41,9 +41,9 @@ class Application
         // SetBasePath - Spécifie une URL de base pour que PHP interprète les URL relatives
         $this->router->setBasePath($baseUrl);
 
-        dump($baseUrl);
+    // dump($baseUrl);
 
-        dump($this->router); // permet de voir ce qu'il y a dans l'objet $router de la classe AltoRouter
+    // dump($this->router); // permet de voir ce qu'il y a dans l'objet $router de la classe AltoRouter
 
         // 1:16:40 
         // 1:17:08 récap > index.php et Application.php
@@ -53,6 +53,60 @@ class Application
         // J'appelle ma méthode 'defineRoutes' qui se charge de remplir notre objet Altorouter avec nos routes
         $this->defineRoutes();
 
+    }
+
+    // 01:29:50  : video S06-e01 / Blue-01-Matin 1-oFramework.mp4
+    // 00:00:00  :  "    "    "  / Blue-02-Matin 2-oFramework.mp4 : Récap de la création de l'architecture
+    public function run()
+    {
+        // je demande à AltoRouter d'essayer de "matcher" l'url actuelle ...
+        // match() est une métode d'AltoRouter
+        // On va faire correspondre l'URL qui est appelée, celle indiquée dans la barre d'URL du navigateur, donc une page du site. 
+        // Celle-si sera redirigée vers index.php, et comparée avec les routes déclarées et donc existantes dans la méthode defineRoute()
+        $match = $this->router->match();
+
+        // la variable $match peut valoir :
+        // false si aucune route ne correspond avec l'url actuelle
+        // un tableau si une correspondance (= un "match") à été trouvée
+
+        // Si on a une correspondance ...
+        if ($match !== false) {
+        // OU
+        // if (is_array($match)){}
+
+            // explode permet de découper une chaîne de caractères en fonction d'un délimiteur ici '#'
+            // 'target' correspond à 'MainController#home
+            // list() permet de regrouper un tableau dans des variables
+            // Je viens donc découper ma variable $match['target'] suivant le #
+            // et j'assigne les valeurs dans les 2 variables "$controllerName" et "$methodeName"
+            list($controllerName, $methodeName) = explode('#', $match['target']);
+
+            /**
+             * Reviens à faire :
+             *  $target = explode('#', $match['target']);
+             *  $ControllerName = $target[0];
+             *  $methodeName = $target[1];
+             */
+
+            // J'isole mes paramètres
+            $params = $match['params'];
+
+        // Si on a pas de correspondance ... ou la page 404
+        } else {
+
+            $controllerName = 'ErrorCOntroller';
+            $methode = 'Error404';
+            $params = array();
+
+        }   
+        
+        // 00:15:33 video S06-e01 / Blue-02-Matin 2-oFramework.mp4
+
+        // renvoi 
+        dump($match);
+        dump($controllerName); // MainController
+        dump($methodeName);    // home
+        dump($params);         // []
     }
 
     private function defineRoutes()
@@ -68,7 +122,7 @@ class Application
         // $this->router->map('GET', '/', 'MainController#home','main_home');
         // $this->router->map('GET', '/', 'MainController#home','main_home');
 
-        dump($this->router);
+    dump($this->router);
 
     }
 
