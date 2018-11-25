@@ -79,13 +79,13 @@ class Application
             // list() permet de regrouper un tableau dans des variables
             // Je viens donc découper ma variable $match['target'] suivant le #
             // et j'assigne les valeurs dans les 2 variables "$controllerName" et "$methodeName"
-            list($controllerName, $methodeName) = explode('#', $match['target']);
+            list($controllerName, $methodName) = explode('#', $match['target']);
 
             /**
              * Reviens à faire :
              *  $target = explode('#', $match['target']);
              *  $ControllerName = $target[0];
-             *  $methodeName = $target[1];
+             *  $methodName = $target[1];
              */
 
             // J'isole mes paramètres
@@ -95,18 +95,36 @@ class Application
         } else {
 
             $controllerName = 'ErrorCOntroller';
-            $methode = 'Error404';
+            $method = 'Error404';
             $params = array();
 
         }   
         
         // 00:15:33 video S06-e01 / Blue-02-Matin 2-oFramework.mp4
+        /* 
+           J'instancie mon nouveau controlleur avec le nom précédement déterminé,
+           ainsi je crée un objet $myController de la classe controllerName auquel je passe en argument l'URL de base.
+           et initialise le controlleur pour l'utiliser.
+        */
+        // La variable $sontrollerName va être remplacée par PHP par sa valeur(MainController)
+            // $myController = new MainController();
+        $myController = new $controllerName($this->router);
+
+        // renvoi une Fatal Error, car la classe MainController, 
+        // qui correspond à la valeur de $controllerName n'est pas créée.
+        
+        // J'exécute la méthode du controller précédement déterminé
+        // La variable $methodName va être remplacée par PHP par sa valeur(home) 
+            // $myController->home();
+        $myController->$methodName($params);
+         
 
         // renvoi 
         dump($match);
         dump($controllerName); // MainController
-        dump($methodeName);    // home
+        dump($methodName);     // home
         dump($params);         // []
+        
     }
 
     private function defineRoutes()
