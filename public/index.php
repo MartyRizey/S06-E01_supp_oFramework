@@ -1,3 +1,1 @@
-<?php
-
-echo 'Vous êtes dans index.php';
+Vous êtes dans le fichier index.php

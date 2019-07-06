@@ -1,15 +1,7 @@
-RewriteEngine On
-
-#dynamically setup base uri
-RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
-RewriteRule ^(.*) - [E=BASE_URI:%1]
-
-# redirect every request to index.php
-# and give the relative URL in « _url » GET param
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
-
-
-
-
+# active le moteur de réécriture d'URL d'Apache
+RewriteEngine on
+# Ceci vérifie que le dossier (-d) ou fichier (-f) n'existe pas (dans le cas contraire il affichera le dossier/fichier) :
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+# Et ceci redirige la requête vers index.php :
+RewriteRule . index.php [L]
