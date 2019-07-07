@@ -1,0 +1,16 @@
+{
+    "name": "mint/s06-e01_supp_o-framework",
+    "require": {
+        "altorouter/altorouter": "^1.2",
+        "symfony/var-dumper": "^4.3"
+        
+    },
+    "authors": [
+        {
+            "name": "MartyRizey",
+            "email": "martyrizey@gmail.com"
+        }
+    ]
+}
+
+
